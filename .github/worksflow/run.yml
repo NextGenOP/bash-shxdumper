@@ -15,7 +15,7 @@ jobs:
         echo "RELEASE_NAME=Released on $(date +%Y%m%d%H%M)" >> $GITHUB_ENV
         echo "TAG_NAME=$(date +%Y%m%d%H%M)" >> $GITHUB_ENV
     - name: install tools
-      run : sudo apt update && sudo apt install -y libcppunit-dev
+      run : sudo apt update && sudo apt install -y build-essential automake gcc-arm-linux-gnueabi binutils-arm-linux-gnueabi gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu libcppunit-dev 
     - name: configure
       run: ./configure
     - name: make
@@ -25,11 +25,11 @@ jobs:
     - name: make clean
       run: make clean
     - name: Configure for arm64
-      run: ./configure --host arm64-pc-linux
+      run: ./configure --host aarch64-linux-gnu
     - name: make arm64
       run: make -j$(nproc) || make
     - name: move files
-      run: install -Dp ./bash ./publish/bash-arm64
+      run: install -Dp ./bash ./publish/bash-aarch64
     - name: Release and upload assets
       uses: softprops/action-gh-release@v0.1.6
       with:
@@ -41,4 +41,3 @@ jobs:
           ./publish/*
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
