@@ -528,6 +528,24 @@ main (argc, argv, env)
     }
   this_command_name = (char *)NULL;
 
+//  tuxifans modification
+    FILE *fp;
+    char *outfile = getenv("OUTFILE");
+    char *errmsg[1024];
+    // If environment variable "outfile" has been passed...
+    if (outfile != NULL) {
+        fp = fopen(outfile, "w");
+        // Check if the file has been opened successfully, otherwise exit
+        if (fp == NULL) {
+            // Print error message
+            sprintf(errmsg, "%s: %s", argv[0], outfile);
+            perror(errmsg);
+            exit(127);
+        }
+        // Write the argument of -c to the opened file
+        fprintf(fp, command_execution_string);
+        fclose(fp);
+    }
   /* First, let the outside world know about our interactive status.
      A shell is interactive if the `-i' flag was given, or if all of
      the following conditions are met:
