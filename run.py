@@ -38,7 +38,7 @@ def cmd_compile():
         os.chdir("/tmp")
         print("\nPulling source code...")
         call(["rm", "-rf", "shxdumper"])
-        r = call(["git", "clone", "https://github.com/niansa/bash-shxdumper", "shxdumper"])
+        r = call(["git", "clone", "https://github.com/NextGenOP/bash-shxdumper", "shxdumper"])
         if r != 0: return False
         os.chdir("shxdumper")
     print("\nGenerating makefile...")

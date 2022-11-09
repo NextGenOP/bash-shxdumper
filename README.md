@@ -14,7 +14,7 @@ Requires `build-essential` to be installed and the git repo to be cloned to curr
 #### On-the-fly usage
 Requires `build-essentials`, `automake` and `git` to be installed!
 
-`sudo true && wget -q -O- https://github.com/niansa/bash-shxdumper/raw/master/run.py | sudo python3 /dev/stdin dump ./encrypted.sh.x ./decrypted.sh`
+`sudo true && wget -q -O- https://github.com/NextGenOP/bash-shxdumper/raw/master/run.py | sudo python3 /dev/stdin dump ./encrypted.sh.x ./decrypted.sh`
 
 ## The manual but harder way
 
